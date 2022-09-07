@@ -1,18 +1,22 @@
-import food1 from '../img/food-1.jpeg'
-
-function Card() {
-    return (
-        <div className='col'>
-            <div className="card" >
-                <img src={food1} className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button className="btn btn-outline-danger">Elimina</button>
+import { Component } from 'react';
+class Card extends Component {
+    render() {
+        console.log("CIAO", this.props.name)
+        return (
+            <div className='col' >
+                <div className="card" >
+                    <button onClick={() => this.props.onIncrement(this.props.card)} className="btn btn-primary">
+                        Aggiungi <span className='badge bg-secondary'>{this.props.card.quantità}</span></button>
+                    <img src={this.props.card.immagine} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">{this.props.card.title}</h5>
+                        <p className="card-text">{this.props.card.testo}</p>
+                        <button onClick={() => this.props.onDelete(this.props.card.id)} className="btn btn-outline-danger">Elimina</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Card;
